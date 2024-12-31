@@ -3,7 +3,7 @@
 
 
 
-# Requierments
+# Requirements
 
 TillaHook (TO GET THIS YOU WILL HAVE TO COMPILE IT FROM DEVS GITHUB OR DOWNLOAD IT WHEN IT RELEASES)
 
