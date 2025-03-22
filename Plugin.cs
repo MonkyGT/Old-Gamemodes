@@ -1,75 +1,16 @@
 ﻿using System;
 using BepInEx;
 using UnityEngine;
-using TillaHook;
-using TillaHook.Models;
+using Utilla;
+using Utilla.Attributes;
+using Utilla.Models;
 
-namespace GorillaTagModTemplateProject
+namespace OldGamemodes
 {
-	/// <summary>
-	/// This is your mod's main class.
-	/// </summary>
-
-	/* This attribute tells Utilla to look for [ModdedGameJoin] and [ModdedGameLeave] */
-
-	[BepInDependency("dev.tillahook")]
+	[ModdedGamemode("MODDED_Hunt", "MODDED HUNT", BaseGamemode.Hunt)]
+	[ModdedGamemode("MODDED_Paintbrawl", "MODDED BRAWL", BaseGamemode.Paintbrawl)]
+	[ModdedGamemode("MODDED_Ambush", "MODDED AMBUSH")]
+	[ModdedGamemode("MODDED_Ghost", "MODDED GHOST")]
 	[BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
-	public class Plugin : BaseUnityPlugin
-	{
-		bool inRoom;
-
-		void Start()
-		{
-				TillaHook.TillaHook.Hook.AddGameMode(new GameModeWrapper[1] {
-					new GameModeWrapper()
-					{
-						DisplayName = "HUNT",
-						ID = "MODDED_HUNT",
-						GameModeType = "Hunt"
-					}
-				}, OnJoin, OnLeave);
-				TillaHook.TillaHook.Hook.AddGameMode(new GameModeWrapper[1] {
-					new GameModeWrapper()
-					{
-						DisplayName = "PAINTBRAWL",
-						ID = "MODDED_PAINTBRAWL",
-						GameModeType = "Paintbrawl"
-						
-					}
-				}, OnJoin, OnLeave);
-		}
-
-		void OnEnable()
-		{
-			HarmonyPatches.ApplyHarmonyPatches();
-		}
-
-		void OnDisable()
-		{
-			HarmonyPatches.RemoveHarmonyPatches();
-		}
-
-		void OnGameInitialized(object sender, EventArgs e)
-		{
-
-		}
-
-		void Update()
-		{ 
-			
-		}
-
-
-
-		public void OnJoin(string gamemode)
-		{
-			inRoom = true;
-		}
-
-
-		public void OnLeave(string gamemode)
-		{
-			inRoom = false;
-		}
-	}
+	public class Plugin : BaseUnityPlugin { }
 }
